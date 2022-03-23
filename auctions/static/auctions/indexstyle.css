@@ -1,0 +1,44 @@
+* {
+    font-size: 20px;
+}
+
+.wrapper {
+    display: flex;
+    height: 160px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 2px gainsboro;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 450px;
+}
+
+
+.img {
+    margin-top: 20px;
+    width: auto;
+    height: inherit;
+}
+
+.info {
+    padding-left: 40px;
+}
+
+.name {
+    padding-top: 20px;
+}
+
+.price {
+    padding-top: 20px;
+}
+
+.date {
+    padding-top: 20px;
+    font-size: 14px;
+    color: dimgray;
+}

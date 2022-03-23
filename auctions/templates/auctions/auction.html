@@ -1,0 +1,55 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listing: {{ auction.name }}</h2>
+    <img style="height: 350px; width: auto;" src="{{ auction.image.url }}" alt="">
+    <h6>Owner: <span style="color: red;">{{ auction.owner }}</span></h6>
+    <h3>${{ auction.bid }}</h3>
+
+    {% if user.is_authenticated %}
+    <form action="{% url 'createBid' auction.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" type="number" step="0.01" name="bidoffer" placeholder="Make an offer!">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Offer Bid">
+    </form>
+    {% endif %}
+    
+    
+    {% if message %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+    <h2>Offered Bids:</h2>
+    {% for offer in offers %}
+        <ul>
+            <li>{{ offer }}</li>
+        </ul>
+    {% empty %}
+        There is no offered bid for this listing.
+    {% endfor %}
+    
+    <hr>
+    {% if user.is_authenticated %}
+    <form action="{%  url 'makecomment' auction.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" type="text" step="0.01" name="comment" placeholder="Write your comment!">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Comment">
+    </form>
+    {% endif %}
+    
+    {% if commentmessage %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+    <h2>Comments:</h2>
+    {% for comment in comments %}
+        <ul>
+            <li>{{ comment }}</li>
+        </ul>
+    {% empty %}
+        There is no comment bid for this listing.
+    {% endfor %}
+
+{% endblock %}

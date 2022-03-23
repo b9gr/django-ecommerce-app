@@ -1,0 +1,22 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    {% for auction in auctions %}
+    <a id="" href="{% url 'auction' auction.id %}">
+        <div class="wrapper">
+            <div class="image">
+                <img class="img" src="{{ auction.image.url }}" alt="">             
+            </div>
+            <div class="info">
+                <div style="color: black;" class="name"><strong>{{auction.name}}</strong></div>
+                <div style="color: black;" class="price"><strong>Current bid:</strong> ${{auction.bid}}</div>
+                <div class="date">Date: {{auction.date}}</div>
+            </div>
+           
+        </div>
+    </a>
+    {% endfor %}
+
+{% endblock %}
